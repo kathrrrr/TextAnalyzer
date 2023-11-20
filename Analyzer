@@ -1,0 +1,30 @@
+import re
+
+f = open("Textfile.txt", "r")
+inputFileStr = f.read().lower()
+inputFileArray = re.split(r'\W+', inputFileStr)
+
+g = open("goodWords.txt", "r")
+goodWordsStr = g.read().lower()
+
+goodWordsArray = goodWordsStr.split()
+
+def countWord(str) -> int:
+    i = 0
+    for word in inputFileArray :
+        print(word)
+        if str == word :
+            i += 1
+    return i
+
+def countSpecialWords(specialWordsArray) -> int:
+    i = 0
+    for word in inputFileArray :
+        if word in specialWordsArray :
+            i += 1
+    return i
+
+print(countSpecialWords(goodWordsArray))
+
+f.close()
+g.close()
